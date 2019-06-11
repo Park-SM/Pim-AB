@@ -7,7 +7,7 @@ public interface MemberService {
 	int create(Member member);
 	Member read(Member member);
 	ArrayList<Member> readList();
-	int update(Member member);
+	int update(int index, Member member);
 	int delete(Member member);	
 	int findByUid(Member member);	
 }

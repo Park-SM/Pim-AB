@@ -66,9 +66,23 @@ public class MemberDAO {
 		return ret;
 	}
 	
-	public int update(Member member) {
+	public int update(int sIndex, Member member) {
 		int ret = -1; // 0 이상이면 해당 아이디가 존재하므로 수정, -1이하이면 수정 실패		
-		
+		try {
+			if (sIndex > -1) { // 0이하 이면 실패 못찾음.
+				fw = new MemberFileWriter(file);
+				Member temp_m = memberList.get(sIndex);
+				temp_m.setUid(member.getUid());
+				temp_m.setUname(member.getUname());
+				temp_m.setUpw(member.getUpw());
+				//temp_m.setMobilePhone(member.getMobilePhone());
+				memberList.set(sIndex, temp_m);
+				fw.saveMember(memberList);
+				ret = sIndex;
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		return ret;
 	}	

@@ -66,8 +66,8 @@ public class MemberViewController implements Initializable {
 				(observable, oldValue, newValue) -> showMemberInfo(newValue));
 
 		btnCreate.setOnMouseClicked(event -> handleCreate());		
-		// btnDelete.setOnMouseClicked(e -> handleDelete());		
-		btnExecute.setOnMouseClicked(event -> handleComso());	
+		btnDelete.setOnMouseClicked(event -> handleDelete());		
+		btnExecute.setOnMouseClicked(event -> handleExecute());	
 		
 		loadMemberTableView();
 	}
@@ -83,13 +83,13 @@ public class MemberViewController implements Initializable {
 	String str = ""; // 인스턴스 변수 - 객체 변수, 객체가 존재하는 동안 메모리에 존재
 	@FXML 
 	private void handleExecute() { // event source, listener, handler
-		str = str + tfExecute.getText() + "\n";
+		str += tfExecute.getText() + "\n";
 		//str = ts.setTextArea(tfExecute.getText());
-		/*
-		str = taExecute.getText();
-		String name = tfExecute.getText();
-		str = str + ts.appendTextArea(name);
-		*/
+		
+		//str = taExecute.getText();
+		//String name = tfExecute.getText();
+		//str = str + ts.appendTextArea(name);
+		
 		taExecute.setText(str);
 	}
 	
@@ -133,12 +133,12 @@ public class MemberViewController implements Initializable {
 	
 	@FXML 
 	private void handleUpdate() {
-		Member newMember = new Member(tfID.getText(), tfPW.getText(), tfName.getText(), tfMobilePhone.getText());
+		Member newMember = new Member(tfID.getText(), tfPW.getText(), tfName.getText(), null);
 
 		int selectedIndex = tableViewMember.getSelectionModel().getSelectedIndex();
 		if (selectedIndex >= 0) {
 			tableViewMember.getItems().set(selectedIndex, newMember);
-			memberService.update(newMember);			
+			memberService.update(selectedIndex, newMember);			
 		} else {
 			showAlert("������ �� �� �����ϴ�.");          
         }

@@ -1,4 +1,3 @@
 uid	upw	uname
-egyou	cometrue	egyou
-1	1	1
-asd	sadasd	asd
+32	cometrue123	egyou43
+32	upw	uname
