@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 import model.Member;
 import model.MemberFileWriter;
@@ -72,13 +74,17 @@ public class MemberDAO {
 			if (sIndex > -1) { // 0이하 이면 실패 못찾음.
 				fw = new MemberFileWriter(file);
 				Member temp_m = memberList.get(sIndex);
-				temp_m.setUid(member.getUid());
-				temp_m.setUname(member.getUname());
-				temp_m.setUpw(member.getUpw());
-				//temp_m.setMobilePhone(member.getMobilePhone());
-				memberList.set(sIndex, temp_m);
-				fw.saveMember(memberList);
-				ret = sIndex;
+				if (temp_m.getUid().equals(member.getUid())) {
+					temp_m.setUid(member.getUid());
+					temp_m.setUname(member.getUname());
+					temp_m.setUpw(member.getUpw());
+					//temp_m.setMobilePhone(member.getMobilePhone());
+					memberList.set(sIndex, temp_m);
+					fw.saveMember(memberList);
+					ret = sIndex;
+				} else {
+					
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

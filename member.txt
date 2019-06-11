@@ -1,3 +1,2 @@
-uid	upw	uname
-32	cometrue123	egyou43
-32	upw	uname
+12	1	1
+32	2	2
