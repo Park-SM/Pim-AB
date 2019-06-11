@@ -51,7 +51,7 @@
             <TableColumn fx:id="columnName" prefWidth="96.0" text="이름" />
         </columns>
       </TableView>
-      <Button fx:id="btnExecute" layoutX="321.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#handleExecute" text="실행" />
+      <Button fx:id="btnExecute" layoutX="321.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#handleComso" text="실행" />
       <TextArea fx:id="taExecute" layoutX="13.0" layoutY="280.0" prefHeight="232.0" prefWidth="364.0" />
       <TextField fx:id="tfExecute" layoutX="13.0" layoutY="250.0" prefHeight="23.0" prefWidth="199.0" promptText="입력" />
    </children>

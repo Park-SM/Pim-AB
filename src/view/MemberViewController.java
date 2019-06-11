@@ -67,10 +67,19 @@ public class MemberViewController implements Initializable {
 
 		btnCreate.setOnMouseClicked(event -> handleCreate());		
 		// btnDelete.setOnMouseClicked(e -> handleDelete());		
-		btnExecute.setOnMouseClicked(event -> handleExecute());	
+		btnExecute.setOnMouseClicked(event -> handleComso());	
 		
 		loadMemberTableView();
 	}
+	
+	
+	@FXML
+	private void handleComso() {
+		System.out.println("ParkSangMin");
+		taExecute.setText("Comso");
+	}
+	
+	
 	String str = ""; // 인스턴스 변수 - 객체 변수, 객체가 존재하는 동안 메모리에 존재
 	@FXML 
 	private void handleExecute() { // event source, listener, handler
@@ -83,6 +92,7 @@ public class MemberViewController implements Initializable {
 		*/
 		taExecute.setText(str);
 	}
+	
 	
 	private void showMemberInfo(Member member) {
 		if (member != null) {
@@ -119,6 +129,8 @@ public class MemberViewController implements Initializable {
 		} else
 			showAlert("ID 입력오류");
 	}
+	
+	
 	@FXML 
 	private void handleUpdate() {
 		Member newMember = new Member(tfID.getText(), tfPW.getText(), tfName.getText(), tfMobilePhone.getText());
