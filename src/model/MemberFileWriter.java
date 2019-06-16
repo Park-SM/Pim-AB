@@ -17,7 +17,8 @@ public class MemberFileWriter {
 			try {
 				fw.write(m.getUid() + "\t");
 				fw.write(m.getUpw() + "\t");
-				fw.write(m.getUname() + "\n");
+				fw.write(m.getUname() + "\t");
+				fw.write(m.getContact() + "\n");
 				fw.flush();
 			} catch (IOException e) {
 			}			

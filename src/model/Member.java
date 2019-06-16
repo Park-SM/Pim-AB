@@ -10,7 +10,7 @@ public class Member { // DB의 레코드와 매핑되는 객체
 	private StringProperty uid; // DB의 필드와 매핑
 	private StringProperty upw;
 	private StringProperty uname;
-	private final StringProperty mobilePhone;
+	private StringProperty contact;
 	/*
     private final IntegerProperty zipcode;
     private ObjectProperty<LocalDate> birthday;
@@ -19,11 +19,11 @@ public class Member { // DB의 레코드와 매핑되는 객체
 		this(null, null, null, null);
 	}
 	
-	public Member(String id, String pw, String name, String mobilePhone) {
+	public Member(String id, String pw, String name, String contact) {
 		this.uid = new SimpleStringProperty(id);
 		this.uname = new SimpleStringProperty(name);
 		this.upw = new SimpleStringProperty(pw);
-		this.mobilePhone = new SimpleStringProperty(mobilePhone);
+		this.contact = new SimpleStringProperty(contact);
 	}
 	
 	public String getUid() {
@@ -55,14 +55,15 @@ public class Member { // DB의 레코드와 매핑되는 객체
     public StringProperty unameProperty() {
         return uname;
     }
-    
-	public String getMobilePhone() {
-		return this.mobilePhone.get();
+
+	public String getContact() {
+		return this.contact.get();
 	}
-	public void setMobilePhone(String mobilePhone) {
-		this.mobilePhone.set(mobilePhone);
+	public void setContact(String contact) {
+		this.contact.set(contact);
 	}
-    public StringProperty mobilePhoneProperty() {
-        return mobilePhone;
+	public StringProperty contactProperty() {
+        return contact;
     }
+
 }
