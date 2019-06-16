@@ -137,10 +137,10 @@ public class MemberViewController implements Initializable {
 
 		int selectedIndex = tableViewMember.getSelectionModel().getSelectedIndex();
 		if (selectedIndex >= 0) {
-			tableViewMember.getItems().set(selectedIndex, newMember);
-			memberService.update(selectedIndex, newMember);			
+			if (memberService.update(newMember) > -1) tableViewMember.getItems().set(selectedIndex, newMember);
+			else showAlert("ID는 수정할 수 없습니다.");
 		} else {
-			showAlert("������ �� �� �����ϴ�.");          
+			showAlert("계정을 선택해주세요.");          
         }
 	}
 	
@@ -150,7 +150,7 @@ public class MemberViewController implements Initializable {
 		if (selectedIndex >= 0) {
 			memberService.delete(tableViewMember.getItems().remove(selectedIndex));			
 		} else {
-			showAlert("������ �� �� �����ϴ�.");
+			showAlert("계정을 선택해주세요.");
         }
 	}
 	

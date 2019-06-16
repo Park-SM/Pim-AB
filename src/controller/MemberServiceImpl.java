@@ -42,8 +42,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int update(int index, Member member) {
-		if(memberDAO.update(index, member) < 0)
+	public int update(Member member) {
+		if(memberDAO.update(member) < 0)
 			return -1;
 		else
 			return 0;

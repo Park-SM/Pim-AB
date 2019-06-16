@@ -68,9 +68,10 @@ public class MemberDAO {
 		return ret;
 	}
 	
-	public int update(int sIndex, Member member) {
+	public int update(Member member) {
 		int ret = -1; // 0 이상이면 해당 아이디가 존재하므로 수정, -1이하이면 수정 실패		
 		try {
+			int sIndex = searchByID(member);
 			if (sIndex > -1) { // 0이하 이면 실패 못찾음.
 				fw = new MemberFileWriter(file);
 				Member temp_m = memberList.get(sIndex);
@@ -80,11 +81,11 @@ public class MemberDAO {
 					temp_m.setUpw(member.getUpw());
 					//temp_m.setMobilePhone(member.getMobilePhone());
 					memberList.set(sIndex, temp_m);
-					fw.saveMember(memberList);
 					ret = sIndex;
 				} else {
 					
 				}
+				fw.saveMember(memberList);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -94,6 +95,14 @@ public class MemberDAO {
 	}	
 	public int delete(Member member) {		
 		int ret = -1; // 0 이상이면 해당 아이디가 존재하므로 삭제, -1이하이면 삭제 실패
+		try {
+			fw = new MemberFileWriter(file);
+			memberList.remove(member);
+			fw.saveMember(memberList);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return ret;
 	}
